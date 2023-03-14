@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.wchar.sample.mds.dao.sqlite.AccountDaoForSqlite">
+
+    <select id="findAllAccount" resultType="net.wchar.sample.mds.model.po.AccountPo">
+        select t.account_id, t.account_name
+        from sys_account t
+        where t.is_delete = 1
+    </select>
+
+    <insert id="createAccount" parameterType="java.lang.String">
+        insert into sys_account(`account_name`, `is_delete`)
+        values (#{accountName}, 1);
+    </insert>
+</mapper>
